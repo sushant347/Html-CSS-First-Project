@@ -5,7 +5,7 @@
 **UrbanWave** is a stylish, responsive, and feature-rich frontend for an online fashion retailer. It allows users to browse clothes, footwear, and accessories, manage a shopping cart, and simulate a checkout process. The project focuses on a smooth user experience with custom animations and local storage persistence.
 
 ## 🚀 Live Demo
-> **(https://sushant347.github.io/Minor-demo-Project-HTML_CSS_JS-/index.html)** 
+> **(https://sushant347.github.io/Html-CSS-First-Project/index.html)** 
 ---
 
 ## ✨ Key Features

@@ -466,34 +466,35 @@ p{
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   padding: 30px 40px 0 40px; /* Removed bottom padding */
   margin-bottom: 10px;
-  min-height: 600px; /* Tall white box */
+  min-height: 450px; /* Tall white box */
   overflow: hidden; /* Clip images as they slide up from the bottom */
 }
 
 .hero .left {
-  flex: 1;
-  margin-right: 40px;
+  flex: 0 0 50%; /* Strictly occupy 50% of the width */
   max-width: 50%;
+  padding-right: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center; /* Center content vertically */
+  z-index: 2;
 }
 
 .hero .right {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  gap: 20px;
+  flex: 0 0 50%; /* Strictly occupy 50% of the width */
   max-width: 50%;
   position: relative;
+  height: 450px; /* Match the min-height of the header to ensure images have space */
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden; /* Ensure images don't bleed out of the white box */
 }
 
 /* --- THE GLOW BEHIND THE IMAGES --- */
 .hero .right::before {
   content: "";
   position: absolute;
-  inset: -20% -10% -20% 10%;
+  inset: 0;
   z-index: 0;
   border-radius: 50%;
   background:
@@ -518,11 +519,14 @@ p{
 
 .hero .right img {
   width: auto;
-  height: 95%; /* Proper size: fills most of the white box */
-  max-width: 45%;
-  object-fit: cover;
+  height: 100%; 
+  max-width: 80%; /* Slightly reduced to prevent excessive overlap */
+  object-fit: contain;
+  object-position: center bottom; /* Centered within their box for better spacing */
   border-radius: 10px 10px 0 0;
-  position: relative;
+  position: absolute; /* Layered positioning to prevent pushing text */
+  bottom: 0;
+  right: 0;
   z-index: 1;
   opacity: 0;
   transform: translateY(100%); /* Start completely below the header */
@@ -532,8 +536,8 @@ p{
 /* Second image animation delay */
 .hero .right img:nth-child(3) {
   animation-delay: 0.3s;
-  height: 100%; /* Increased from 95% */
-  max-width: 50%; /* Increased from 45% */
+  height: 105%; 
+  right: 40%; /* Increased offset to use the "space ahead" and reduce overlap */
 }
 
 .container {
@@ -616,6 +620,7 @@ p{
   
   .hero .right img {
     height: 100%;
+    max-width: 70%;
     min-height: 350px;
   }
 }
@@ -623,8 +628,6 @@ p{
 
 /* Hero Text Container */
 header .left {
-  flex: 1;
-  margin-left: 60px;
   opacity: 0;
   transform: scale(0.8);   /* smaller at start */
   animation: heroTextEnter 1s ease forwards 1.2s; /* starts after image */
@@ -1455,7 +1458,7 @@ header .left .btn {
   }
   
   .hero .right img {
-    max-width: 48%;
+    max-width: 65%; /* Larger models on small mobile screens */
     border-radius: 8px 8px 0 0;
   }
   
